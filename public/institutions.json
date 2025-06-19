@@ -1,0 +1,19 @@
+[
+  { "name": "University of Lagos", "state": "Lagos", "type": "University" },
+  {
+    "name": "Yaba College of Technology",
+    "state": "Lagos",
+    "type": "Polytechnic"
+  },
+  {
+    "name": "Ahmadu Bello University",
+    "state": "Kaduna",
+    "type": "University"
+  },
+  {
+    "name": "Federal Polytechnic, Bida",
+    "state": "Niger",
+    "type": "Polytechnic"
+  },
+  { "name": "University of Ilorin", "state": "Kwara", "type": "University" }
+]
