@@ -121,7 +121,7 @@ function Profile() {
                       setEditData({ ...editData, whatsAppLink: e.target.value })
                     }
                     className="input-field"
-                    placeholder="Phone Number"
+                    placeholder="Optional WhatsApp Link"
                   />
                   <input
                     type="text"
