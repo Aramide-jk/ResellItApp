@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ShoppingBag, User, Plus, LogOut } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
@@ -12,6 +12,25 @@ function Header() {
     logout();
     navigate("/");
   };
+
+  // Scroll Header
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < lastScrollY) {
+        setShowHeader(true); // scrolling up
+      } else {
+        setShowHeader(false); // scrolling down
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
     <>
@@ -74,9 +93,12 @@ function Header() {
           </div>
         </div>
       </header>
-
       {/* Mobile Bottom Navigation */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg flex justify-around items-center h-14 z-50">
+
+      <nav
+        className={` fixed bottom-0 left-0 right-0 bg-white flex justify-around items-center h-14 border-t border-green-300 shadow-md transition-transform duration-300 z-50 ${
+          showHeader ? "translate-y-0" : "translate-y-full"
+        } sm:hidden`}>
         {user ? (
           <>
             <Link to="/" className="flex flex-col items-center text-green-900">
