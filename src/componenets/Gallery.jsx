@@ -8,18 +8,18 @@ function ItemImages({ item }) {
 
     // Swap clicked image with main image
     const currentImages = item.images.filter((img) => img !== clickedImage);
-    currentImages.unshift(clickedImage); // bring clicked image to front
+    currentImages.unshift(clickedImage);
     setMainImage(clickedImage);
   };
 
   return (
-    <div className="p-6">
+    <div className="p-">
       {item.images.length > 0 ? (
-        <div className="space-y-4">
+        <div className="space-y-4 ">
           <img
             src={mainImage}
             alt={item.title}
-            className="w-full h-96 object-cover rounded-lg"
+            className="w-full h-80 object-cover rounded-lg "
           />
 
           {item.images.length > 1 && (

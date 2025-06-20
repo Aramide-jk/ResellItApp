@@ -98,12 +98,12 @@ function Header() {
       <nav
         className={` fixed bottom-0 left-0 right-0 bg-white flex justify-around items-center h-14 border-t border-green-300 shadow-md transition-transform duration-300 z-50 ${
           showHeader ? "translate-y-0" : "translate-y-full"
-        } sm:hidden`}>
+        } md:hidden`}>
         {user ? (
           <>
             <Link to="/" className="flex flex-col items-center text-green-900">
               <BiHome className="h-6 w-6" />
-              <span className="text-xs">Post</span>
+              <span className="text-xs">Home</span>
             </Link>
             <Link
               to="/post-item"

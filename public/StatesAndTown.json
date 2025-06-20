@@ -1,0 +1,22 @@
+{
+  "Lagos": ["Ikeja", "Lekki", "Ajah", "Ikorodu", "Surulere", "Epe", "Badagry"],
+  "Oyo": ["Ibadan", "Ogbomosho", "Oyo", "Iseyin", "Saki"],
+  "Abuja": ["Garki", "Wuse", "Maitama", "Asokoro", "Kubwa", "Gwagwalada"],
+  "Kaduna": ["Kaduna", "Zaria", "Kafanchan", "Kagoro", "Birnin Gwari"],
+  "Kano": ["Kano", "Wudil", "Dawakin Tofa", "Bichi", "Gaya"],
+  "Rivers": ["Port Harcourt", "Obio-Akpor", "Bonny", "Eleme", "Ahoada"],
+  "Enugu": ["Enugu", "Nsukka", "Awgu", "Agbani", "Oji River"],
+  "Delta": ["Warri", "Asaba", "Sapele", "Ughelli", "Agbor"],
+  "Anambra": ["Awka", "Onitsha", "Nnewi", "Ekwulobia", "Oko"],
+  "Osun": ["Osogbo", "Ile-Ife", "Iwo", "Ejigbo", "Ede"],
+  "Ekiti": ["Ado-Ekiti", "Ikere", "Iworoko", "Oye", "Ikole"],
+  "Ogun": ["Abeokuta", "Ijebu-Ode", "Sagamu", "Ota", "Ilaro"],
+  "Niger": ["Minna", "Bida", "Suleja", "Kontagora", "Zungeru"],
+  "Plateau": ["Jos", "Bukuru", "Pankshin", "Shendam", "Bassa"],
+  "Benue": ["Makurdi", "Gboko", "Otukpo", "Katsina-Ala", "Vandeikya"],
+  "Borno": ["Maiduguri", "Biu", "Monguno", "Dikwa", "Gwoza"],
+  "Cross River": ["Calabar", "Ogoja", "Ugep", "Ikom", "Obudu"],
+  "Akwa Ibom": ["Uyo", "Eket", "Ikot Ekpene", "Oron", "Abak"],
+  "Edo": ["Benin City", "Ekpoma", "Auchi", "Uromi", "Igueben"],
+  "Kogi": ["Lokoja", "Okene", "Anyigba", "Idah", "Kabba"]
+}

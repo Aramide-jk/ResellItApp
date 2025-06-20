@@ -55,6 +55,7 @@
   border: 1px solid #d1d5db; /* Tailwind's gray-300 */
   border-radius: 0.5rem;
   transition: all 0.2s ease;
+  text-transform: capitalize;
 }
 
 .input-field:focus {
@@ -106,4 +107,17 @@
   color: #c2410c; /* text-orange-800 */
   padding: 2px 6px;
   border-radius: 2px;
+}
+
+/* Mobile screen styles */
+@media (max-width: 640px) {
+  .input-field {
+    padding: 0.3rem 0.5rem;
+    font-size: small;
+  }
+
+  .btn-secondary {
+    font-weight: 500;
+    padding: 0.3rem 0.5rem;
+  }
 }

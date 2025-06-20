@@ -7,6 +7,13 @@ import ImageUpload from "../componenets/ImageUpload";
 import { FiPackage, FiTrash2 } from "react-icons/fi";
 import { CiCircleCheck } from "react-icons/ci";
 import { FaPlus, FaUserAlt, FaUserEdit } from "react-icons/fa";
+import {
+  BiBusSchool,
+  BiLogoWhatsapp,
+  BiMailSend,
+  BiPhone,
+  BiSolidGraduation,
+} from "react-icons/bi";
 
 function Profile() {
   const { user, updateProfile } = useAuth();
@@ -74,17 +81,17 @@ function Profile() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 py-8 overflow-auto">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Profile Header */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8">
-          <div className="flex items-start space-x-6">
-            <div className="flex-shrink-0">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8 overflow-auto">
+          <div className="md:flex md:items-start  md:space-x-6  items-center">
+            <div className="flex-shrink-0 md:mb-0 mb-4 md:place-self-auto place-self-center">
               {user.profileImage ? (
                 <img
                   src={user.profileImage}
                   alt={user.name}
-                  className="h-24 w-24 rounded-l-full object-cover"
+                  className="h-24 w-24 rounded-xl object-cover"
                 />
               ) : (
                 <div className="h-24 w-24 rounded-full bg-blue-100 flex items-center justify-center">
@@ -151,16 +158,29 @@ function Profile() {
                 </div>
               ) : (
                 <>
-                  <h1 className="text-2xl font-bold text-gray-900">
+                  <h1 className="text-2xl font-bold text-gray-900 first-letter:uppercase">
                     {user.name}
                   </h1>
-                  <p className="text-gray-600">{user.email}</p>
-                  <p className="text-gray-600">{user.phone}</p>
-                  <p className="text-gray-600">{user.whatsAppLink}</p>
-                  <p className="text-gray-600">{user.university}</p>
+                  <div className="flex items-center space-x-1">
+                    <BiMailSend className="h-4 w-4 text-gray-400" />
+                    <p className="text-gray-600">{user.email}</p>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <BiPhone className="h-4 w-4 text-gray-400" />
+                    <p className="text-gray-600">{user.phone}</p>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <BiLogoWhatsapp className="h-4 w-4 text-gray-400" />
+                    <p className="text-gray-600">{user.whatsAppLink}</p>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <BiSolidGraduation className="h-4 w-4 text-gray-400" />
+                    <p className="text-gray-600">{user.university}</p>
+                  </div>
+
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="mt-4 flex items-center space-x-2 text-green-600 hover:text-green-700 transition-colors">
+                    className="mt-4 ml-20 flex items-center space-x-2 text-green-600 hover:text-green-700 transition-colors">
                     <FaUserEdit className="h-4 w-4" />
                     <span>Edit Profile</span>
                   </button>

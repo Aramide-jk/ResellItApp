@@ -59,10 +59,10 @@ function Home() {
   return (
     <div className="min-h-screen bg-gray-50 ">
       {/* Hero Section */}
-      <div className=" bg-gradient-to-br from-green-900 via-green-800  to-green-300 text-white ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className=" bg-gradient-to-br from-green-900 via-green-700  to-green-300 ">
+        <div className="max-w-7xl  mx-auto px-2 sm:px-6 lg:px-8 py-6 sm:py-12 ">
           <div className="text-center">
-            <h1 className="text-xl md:text-4xl text-gray-100 font-bold mb-6">
+            <h1 className="text-xl md:text-4xl text-gray-100 font-bold mb-4">
               Sell it. Buy it. Reuse it.
             </h1>
             <p className="text-sm md:text-lg mb-8 text-gray-200 max-w-3xl mx-auto">
@@ -73,13 +73,15 @@ function Home() {
           </div>
 
           {/* Stats */}
-          <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12 grid-columns-3">
+          <div className="hidden sm:block sm:grid sm:grid-cols-3 gap-6 mt-12 grid-columns-3  ">
             {stats.map(({ icon: Icon, label, value }) => (
               <div key={label} className="text-center">
                 <div className="flex justify-center mb-2">
                   <Icon className="h-5 w-5 md:h-7 md:w-7 text-green-200" />
                 </div>
-                <div className="text-lg md:text-2xl font-bold">{value}</div>
+                <div className="text-lg md:text-2xl font-bold text-gray-200">
+                  {value}
+                </div>
                 <div className="text-sm md:text-xs text-gray-200">{label}</div>
               </div>
             ))}
@@ -87,7 +89,7 @@ function Home() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-  py-8 ">
         <SearchFilters
           searchTerm={searchTerm}
           onSearchChange={setSearchTerm}
@@ -99,8 +101,8 @@ function Home() {
           onPriceRangeChange={setPriceRange}
         />
 
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-xl font-bold text-gray-900">
+        <div className="flex justify-between items-center mb-6 sm:mb-6">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900">
             Available Items ({filteredItems.length})
           </h2>
         </div>
@@ -118,7 +120,7 @@ function Home() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-5 gap-2 sm:gap-6">
             {filteredItems.map((item) => (
               <ItemCard key={item.id} item={item} />
             ))}

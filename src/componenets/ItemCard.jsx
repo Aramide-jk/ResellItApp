@@ -11,6 +11,7 @@ const conditionColors = {
 };
 
 function ItemCard({ item }) {
+  console.log(item);
   const formatDate = (date) => {
     return new Intl.RelativeTimeFormat("en", { numeric: "auto" }).format(
       Math.ceil(
@@ -28,7 +29,7 @@ function ItemCard({ item }) {
             <img
               src={item.images[0]}
               alt={item.title}
-              className="w-full h-48 object-cover"
+              className="w-full h-45 sm:h-48 object-cover"
             />
           ) : (
             <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
@@ -56,15 +57,15 @@ function ItemCard({ item }) {
         </div>
 
         <div className="p-4">
-          <h3 className="font-semibold text-lg text-gray-900 mb-2 line-clamp-2 capitalize">
+          <h3 className="font-semibold text-lg text-gray-800 mb-2 line-clamp-2 capitalize ">
             {item.title}
           </h3>
-          <p className="text-gray-600 text-sm mb-3 line-clamp-2 capitalize ">
+          <p className="text-gray-600 text-sm mb-2  line-clamp-2 capitalize ">
             {item.description}
           </p>
 
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-2xl font-bold text-green-600">
+          <div className="flex items-center justify-between mb-2 gap-2">
+            <span className="text-xl sm:text-2xl font-bold text-green-800">
               {/* ₦{item.price} */} ₦{Number(item.price).toLocaleString()}
             </span>
             <span className="badge-blue text-xs">{item.category}</span>
@@ -73,8 +74,16 @@ function ItemCard({ item }) {
           <div className="flex items-center justify-between text-xs text-gray-500">
             <div className="flex items-center space-x-1">
               <User className="h-3 w-3" />
-              <span>{item.sellerName}</span>
+
+              {/* Show only first name on small screens */}
+              <span className="block sm:hidden">
+                {item.sellerName.split(" ")[0]}
+              </span>
+
+              {/* Show full name on medium+ screens */}
+              <span className="hidden sm:block">{item.sellerName}</span>
             </div>
+
             <div className="flex items-center space-x-1">
               <Calendar className="h-3 w-3" />
               <span>{formatDate(item.createdAt)}</span>

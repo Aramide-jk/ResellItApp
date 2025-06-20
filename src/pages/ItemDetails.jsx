@@ -94,46 +94,18 @@ function ItemDetails() {
         </div>
 
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Images */}
-            {/* <div className="p-6">
-              {item.images.length > 0 ? (
-                <div className="space-y-4">
-                  <img
-                    src={item.images[0]}
-                    alt={item.title}
-                    className="w-full h-96 object-cover rounded-lg"
-                  />
-                  {item.images.length > 1 && (
-                    <div className="grid grid-cols-4 gap-2">
-                      {item.images.slice(1, 5).map((image, index) => (
-                        <img
-                          key={index}
-                          src={image}
-                          alt={`${item.title} ${index + 2}`}
-                          className="w-full h-20 object-cover rounded-md cursor-pointer hover:opacity-80 transition-opacity"
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div className="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-                  <TfiAgenda className="h-16 w-16 text-gray-400" />
-                </div>
-              )}
-            </div> */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-">
             <ItemImages item={item} />
 
             {/* Details */}
-            <div className="p-6">
+            <div className="p-4">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                  <h1 className="text-3xl font-bold text-gray-900 mb-2 capitalize">
                     {item.title}
                   </h1>
                   <div className="flex items-center space-x-4">
-                    <span className="text-3xl font-bold text-green-600 flex items-center">
+                    <span className="text-2xl sm:text-3xl font-bold text-green-800 flex items-center">
                       {/* ${item.price} */}₦
                       {Number(item.price).toLocaleString()}
                     </span>
@@ -185,16 +157,7 @@ function ItemDetails() {
                     <BiPhone className="h-5 w-5 text-gray-400" />
                     <span className="text-gray-700 ">{item.sellerPhone}</span>
                   </div>
-                  <div className="flex items-center space-x-3 text-gray-700 ">
-                    <FaWhatsapp className="h-5 w-5 text-gray-700" />
-                    <button
-                      onClick={() => {
-                        handleWhatsAppLink(item.sellerWhatsAppLink);
-                      }}
-                      className="text-gray-900 cursor-pointer">
-                      {item.sellerWhatsAppLink}
-                    </button>
-                  </div>
+
                   <div className="flex items-center space-x-3">
                     <BiCalendar className="h-5 w-5 text-gray-400" />
                     <span className="text-gray-700">
@@ -221,12 +184,22 @@ function ItemDetails() {
                 ) : (
                   <>
                     {!item.isSold && user && (
-                      <button
-                        onClick={handleContact}
-                        className="w-full btn-primary flex items-center justify-center space-x-2">
-                        <BiPhone className="h-5 w-5" />
-                        <span>Contact Seller</span>
-                      </button>
+                      <div className="flex space-x-3">
+                        <button
+                          onClick={handleContact}
+                          className="w-full btn-primary flex items-center justify-center space-x-2">
+                          <BiPhone className="h-5 w-5" />
+                          <span>Phone</span>
+                        </button>
+                        <button
+                          onClick={() => {
+                            handleWhatsAppLink(item.sellerWhatsAppLink);
+                          }}
+                          className="w-full btn-primary flex items-center justify-center space-x-2">
+                          <FaWhatsapp className="h-5 w-5" />
+                          <span>WhatsApp</span>
+                        </button>
+                      </div>
                     )}
                     {!user && (
                       <div className="text-center">
