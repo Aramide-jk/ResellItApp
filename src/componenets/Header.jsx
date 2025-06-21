@@ -43,7 +43,7 @@ function Header() {
               <div className="bg-gradient-to-br from-green-900 via-gray-900 to-green-300 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg">
                 R
               </div>
-              <span className="text-2xl font-bold text-gray-900">ResellIt</span>
+              <span className="text-2xl font-bold text-gray-900">Resellit</span>
             </Link>
 
             {/* Desktop Navigation */}

@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { BiShoppingBag, BiUserPlus } from "react-icons/bi";
 
-function StudentSignUp() {
+function StudentSignUp({ accountType }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -90,6 +90,7 @@ function StudentSignUp() {
       state: formData.state,
       school: formData.school,
       password: formData.password,
+      sellerType: accountType,
     });
 
     if (success) {
@@ -116,16 +117,20 @@ function StudentSignUp() {
             {!selectedState ? (
               <>
                 <h2 className="text-lg font-bold mb-2">Choose State</h2>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  {states.map((state, i) => (
-                    <div
-                      key={i}
-                      className="p-2 cursor-pointer hover:bg-gray-100 text-sm rounded-sm"
-                      onClick={() => handleStateClick(state)}>
-                      {state}
-                    </div>
-                  ))}
-                </div>
+                {isLoading ? (
+                  <div className="bg-gray-800 italic">States Loading...</div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    {states.map((state, i) => (
+                      <div
+                        key={i}
+                        className="p-2 cursor-pointer hover:bg-gray-100 text-sm rounded-sm"
+                        onClick={() => handleStateClick(state)}>
+                        {state}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </>
             ) : (
               <>
@@ -259,7 +264,7 @@ function StudentSignUp() {
                 name="state"
                 type="text"
                 required
-                readOnly
+                // readOnly
                 value={formData.state}
                 className="mt-1 input-field bg-gray-100 cursor-not-allowed"
               />
@@ -276,7 +281,7 @@ function StudentSignUp() {
                 name="school"
                 type="text"
                 required
-                readOnly
+                // readOnly
                 value={formData.school}
                 className="mt-1 input-field bg-gray-100 cursor-not-allowed"
               />

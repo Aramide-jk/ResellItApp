@@ -13,9 +13,10 @@ const categories = [
   "Laptop",
   "Electronics",
   "Furniture",
+  "Jewries",
   "Clothing",
   "Kitchenware",
-  "Sports & Recreation",
+  "Sports",
   "Other",
 ];
 
@@ -65,6 +66,9 @@ function PostItem() {
       sellerId: user.id,
       sellerName: user.name,
       sellerPhone: user.phone,
+      sellerTown: user.town,
+      sellerState: user.state,
+      sellerSchool: user.school,
       sellerWhatsAppLink: user.whatsAppLink,
       isSold: false,
     });

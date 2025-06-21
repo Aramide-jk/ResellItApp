@@ -24,6 +24,8 @@ function Profile() {
     phone: user?.phone || "",
     whatsAppLink: user?.whatsAppLink || "",
     school: user?.school || "",
+    state: user?.state || "",
+    town: user?.town || "",
   });
   const [profileImages, setProfileImages] = useState(
     user?.profileImage ? [user.profileImage] : []
@@ -130,15 +132,40 @@ function Profile() {
                     className="input-field "
                     placeholder="Optional WhatsApp Link"
                   />
-                  <input
-                    type="text"
-                    value={editData.school}
-                    onChange={(e) =>
-                      setEditData({ ...editData, school: e.target.value })
-                    }
-                    className="input-field"
-                    placeholder="Institution"
-                  />
+                  {user.state && (
+                    <input
+                      type="text"
+                      value={editData.state}
+                      onChange={(e) =>
+                        setEditData({ ...editData, state: e.target.value })
+                      }
+                      className="input-field"
+                      placeholder="state"
+                    />
+                  )}
+                  {user.town && (
+                    <input
+                      type="text"
+                      value={editData.town}
+                      onChange={(e) =>
+                        setEditData({ ...editData, town: e.target.value })
+                      }
+                      className="input-field"
+                      placeholder="town"
+                    />
+                  )}
+                  {user.school && (
+                    <input
+                      type="text"
+                      value={editData.school}
+                      onChange={(e) =>
+                        setEditData({ ...editData, school: e.target.value })
+                      }
+                      className="input-field"
+                      placeholder="Institution"
+                    />
+                  )}
+
                   <ImageUpload
                     images={profileImages}
                     onImagesChange={setProfileImages}

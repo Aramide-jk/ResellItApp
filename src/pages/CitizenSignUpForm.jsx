@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { BiShoppingBag, BiUserPlus } from "react-icons/bi";
 
-function CitizenSignUp() {
+function CitizenSignUp({ accountType }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,6 +13,7 @@ function CitizenSignUp() {
     state: "",
     password: "",
     confirmPassword: "",
+    // accountType: accountType,
   });
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -30,23 +31,34 @@ function CitizenSignUp() {
   }, [modalOpen]);
 
   const fetchStates = async () => {
-    const res = await fetch("https://nga-states-lga.onrender.com/fetch");
-    const data = await res.json();
+    setIsLoading(true);
+    try {
+      const res = await fetch("https://nga-states-lga.onrender.com/fetch");
+      const data = await res.json();
 
-    setStates(data);
+      setStates(data);
+    } catch (error) {
+      console.log("Failed to fetch states", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const fetchTownByState = async (stateName) => {
-    const res = await fetch("/stateWithTown.json");
-    const data = await res.json();
+    try {
+      const res = await fetch("/stateWithTown.json");
+      const data = await res.json();
 
-    // Find the object where the state matches
-    const match = data.find(
-      (t) => t.state.toLowerCase() === stateName.toLowerCase()
-    );
+      const match = data.find(
+        (t) => t.state.toLowerCase() === stateName.toLowerCase()
+      );
 
-    // Update your towns state with the town array or an empty array
-    setTowns(match?.town || []);
+      setTowns(match?.town || []);
+    } catch (error) {
+      console.log("Filed to state", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleStateClick = (stateName) => {
@@ -92,7 +104,9 @@ function CitizenSignUp() {
       phone: formData.phone,
       whatsAppLink: formData.whatsAppLink,
       town: formData.town,
+      state: formData.state,
       password: formData.password,
+      sellerType: accountType,
     });
 
     if (success) {
@@ -118,16 +132,23 @@ function CitizenSignUp() {
             {!selectedState ? (
               <>
                 <h2 className="text-lg font-bold mb-2">Choose State</h2>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  {states.map((state, i) => (
-                    <div
-                      key={i}
-                      className="p-2 cursor-pointer hover:bg-gray-100 text-sm rounded-sm"
-                      onClick={() => handleStateClick(state)}>
-                      {state}
-                    </div>
-                  ))}
-                </div>
+
+                {isLoading ? (
+                  <div className="text-gray-800 text-s italic">
+                    State loading...
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-2 text-sm">
+                    {states.map((state, i) => (
+                      <div
+                        key={i}
+                        className="p-2 cursor-pointer hover:bg-gray-100 text-sm rounded-sm"
+                        onClick={() => handleStateClick(state)}>
+                        {state}
+                      </div>
+                    ))}
+                  </div>
+                )}
               </>
             ) : (
               <>
@@ -262,7 +283,8 @@ function CitizenSignUp() {
                 name="state"
                 type="text"
                 required
-                readOnly
+                // hidden
+                // readOnly
                 value={formData.state}
                 className="mt-1 input-field bg-gray-100 cursor-not-allowed"
               />
@@ -278,7 +300,7 @@ function CitizenSignUp() {
                 name="town"
                 type="text"
                 required
-                readOnly
+                // readOnly
                 value={formData.town}
                 className="mt-1 input-field bg-gray-100 cursor-not-allowed"
               />

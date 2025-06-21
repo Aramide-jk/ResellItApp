@@ -6,7 +6,15 @@ import { useAuth } from "../context/AuthContext";
 import { BsArrowLeft } from "react-icons/bs";
 import { CiShare2 } from "react-icons/ci";
 import { TfiAgenda } from "react-icons/tfi";
-import { BiCalendar, BiPhone, BiPhoneCall, BiUser } from "react-icons/bi";
+import {
+  BiCalendar,
+  BiCurrentLocation,
+  BiPhone,
+  BiPhoneCall,
+  BiSolidGraduation,
+  BiSolidLocationPlus,
+  BiUser,
+} from "react-icons/bi";
 import { TbCurrencyNaira } from "react-icons/tb";
 import ItemImages from "../componenets/Gallery";
 import { IoLogoWhatsapp } from "react-icons/io";
@@ -20,7 +28,7 @@ function ItemDetails() {
   const [whatsAppMissing, setWhatsAppMissing] = useState(false);
 
   const item = items.find((item) => item.id === id);
-
+  console.log(items);
   if (!item) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -151,7 +159,7 @@ function ItemDetails() {
                 </p>
               </div>
 
-              <div className="border-t border-gray-100 pt-6">
+              {/* <div className="border-t border-gray-100 pt-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">
                   Seller Information
                 </h3>
@@ -166,6 +174,63 @@ function ItemDetails() {
                     <BiPhone className="h-5 w-5 text-gray-400" />
                     <span className="text-gray-700 ">{item.sellerPhone}</span>
                   </div>
+
+                  <div className="flex items-center space-x-3">
+                    <BiSolidGraduation className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-700 ">{item.seller}</span>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <BiSolidLocationPlus className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-700 ">{item.sellerState}</span>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <BiCurrentLocation className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-700 ">{item.sellerTown}</span>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <BiCalendar className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-700">
+                      Listed on {formatDate(item.createdAt)}
+                    </span>
+                  </div>
+                </div>
+              </div> */}
+              <div className="border-t border-gray-100 pt-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                  Seller Information
+                </h3>
+                <div className="space-y-3">
+                  <div className="flex items-center space-x-3">
+                    <BiUser className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-700 capitalize">
+                      {item.sellerName}
+                    </span>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <BiPhone className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-700 ">{item.sellerPhone}</span>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <BiSolidGraduation className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-700 ">{item.sellerSchool}</span>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <BiSolidLocationPlus className="h-5 w-5 text-gray-400" />
+                    <span className="text-gray-700 ">{item.sellerState}</span>
+                  </div>
+
+                  {item.sellerTown && (
+                    <div className="flex items-center space-x-3">
+                      <BiCurrentLocation className="h-5 w-5 text-gray-400" />
+                      <span className="text-gray-700 ">{item.sellerTown}</span>
+                    </div>
+                  )}
 
                   <div className="flex items-center space-x-3">
                     <BiCalendar className="h-5 w-5 text-gray-400" />

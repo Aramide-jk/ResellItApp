@@ -1,33 +1,29 @@
 import React, { useEffect, useState } from "react";
 
-function StateModal() {
-  //   const [error, setError] = useState("");
+function InstitutesModal() {
+  //    const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(true);
+  const [states, setStates] = useState([]);
+  const [institutions, setInstitutions] = useState([]);
+  const [selectedState, setSelectedState] = useState("");
+  // const [whatsAppUrl, setWhatsAppLUrl] = useState("");
+
+  useEffect(() => {
+    if (modalOpen) fetchStates();
+  }, [modalOpen]);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     whatsAppLink: "",
-    town: "",
     state: "",
+    town: "",
+    school: "",
     password: "",
     confirmPassword: "",
   });
-
-  const [modalOpen, setModalOpen] = useState(true);
-  const [states, setStates] = useState([]);
-  const [selectedState, setSelectedState] = useState("");
-  const [towns, setTowns] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    if (modalOpen) fetchStates();
-  }, [modalOpen]);
-  const handleStateClick = (stateName) => {
-    setSelectedState(stateName);
-    fetchTownByState(stateName);
-    setModalOpen(true);
-    setFormData({ ...formData, state: stateName });
-  };
 
   const fetchStates = async () => {
     setIsLoading(true);
@@ -37,32 +33,30 @@ function StateModal() {
 
       setStates(data);
     } catch (error) {
-      console.log("Failed to fetch states", error);
+      "Failed to load state", error;
     } finally {
       setIsLoading(false);
     }
   };
 
-  const fetchTownByState = async (stateName) => {
-    try {
-      const res = await fetch("/stateWithTown.json");
-      const data = await res.json();
-
-      const match = data.find(
-        (t) => t.state.toLowerCase() === stateName.toLowerCase()
-      );
-
-      setTowns(match?.town || []);
-    } catch (error) {
-      console.log("Filed to state", error);
-    } finally {
-      setIsLoading(false);
-    }
+  const fetchInstitutionsByState = async (stateName) => {
+    const res = await fetch("/states.json");
+    const data = await res.json();
+    const result = data.find(
+      (inst) => inst.state.toLowerCase() === stateName.toLowerCase()
+    );
+    setInstitutions(result?.schools || []);
   };
 
-  const handleInstitutionClick = (town) => {
-    setFormData({ ...formData, town });
-    console.log(town);
+  const handleStateClick = (stateName) => {
+    setSelectedState(stateName);
+    fetchInstitutionsByState(stateName);
+    setModalOpen(true);
+    setFormData({ ...formData, state: stateName });
+  };
+
+  const handleInstitutionClick = (school) => {
+    setFormData({ ...formData, school });
     setModalOpen(false);
   };
 
@@ -80,11 +74,8 @@ function StateModal() {
             {!selectedState ? (
               <>
                 <h2 className="text-lg font-bold mb-2">Choose State</h2>
-
                 {isLoading ? (
-                  <div className="text-gray-800 text-s italic">
-                    State loading...
-                  </div>
+                  <div className="text-gray-800 italic">States Loading...</div>
                 ) : (
                   <div className="grid grid-cols-2 gap-2 text-sm">
                     {states.map((state, i) => (
@@ -101,14 +92,14 @@ function StateModal() {
             ) : (
               <>
                 <h2 className="text-lg font-bold mb-2">
-                  Select Town in {selectedState}
+                  Select Institution in {selectedState}
                 </h2>
-                {towns.map((town, i) => (
+                {institutions.map((inst, i) => (
                   <div
                     key={i}
                     className="p-2 cursor-pointer hover:bg-gray-100 text-sm rounded-sm"
-                    onClick={() => handleInstitutionClick(town)}>
-                    {town}
+                    onClick={() => handleInstitutionClick(inst)}>
+                    {inst}
                   </div>
                 ))}
               </>
@@ -120,4 +111,4 @@ function StateModal() {
   );
 }
 
-export default StateModal;
+export default InstitutesModal;
