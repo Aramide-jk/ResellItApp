@@ -120,7 +120,7 @@
 /* Mobile screen styles */
 @media (max-width: 640px) {
   .input-field {
-    padding: 0.3rem 0.5rem;
+    padding: 0.5rem 0.75rem;
     font-size: small;
   }
 
