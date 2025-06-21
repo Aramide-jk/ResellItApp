@@ -137,7 +137,7 @@ function Profile() {
                       setEditData({ ...editData, school: e.target.value })
                     }
                     className="input-field"
-                    placeholder="University"
+                    placeholder="Institution"
                   />
                   <ImageUpload
                     images={profileImages}
@@ -175,7 +175,7 @@ function Profile() {
                   </div>
                   <div className="flex items-center space-x-1">
                     <BiSolidGraduation className="h-4 w-4 text-gray-400" />
-                    <p className="text-gray-600">{user.university}</p>
+                    <p className="text-gray-600">{user.school}</p>
                   </div>
 
                   <button
