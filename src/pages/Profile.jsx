@@ -23,7 +23,7 @@ function Profile() {
     name: user?.name || "",
     phone: user?.phone || "",
     whatsAppLink: user?.whatsAppLink || "",
-    university: user?.university || "",
+    school: user?.school || "",
   });
   const [profileImages, setProfileImages] = useState(
     user?.profileImage ? [user.profileImage] : []
@@ -132,9 +132,9 @@ function Profile() {
                   />
                   <input
                     type="text"
-                    value={editData.university}
+                    value={editData.school}
                     onChange={(e) =>
-                      setEditData({ ...editData, university: e.target.value })
+                      setEditData({ ...editData, school: e.target.value })
                     }
                     className="input-field"
                     placeholder="University"
