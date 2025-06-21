@@ -3,6 +3,7 @@ import SearchFilters from "../componenets/SearchFilters";
 import ItemCard from "../componenets/ItemCard";
 import { useItems } from "../hooks/useItems";
 import { ShoppingBag, TrendingUp, Users, Recycle } from "lucide-react";
+import { Footer } from "../componenets/Footer";
 
 function Home() {
   const { items } = useItems();
@@ -59,7 +60,7 @@ function Home() {
   return (
     <div className="min-h-screen bg-gray-50 ">
       {/* Hero Section */}
-      <div className=" bg-gradient-to-br from-green-900 via-green-700  to-green-300 ">
+      <div className=" bg-gradient-to-br from-green-900 via-gray-800 to-slate-900 ">
         <div className="max-w-7xl  mx-auto px-2 sm:px-6 lg:px-8 py-6 sm:py-12 ">
           <div className="text-center">
             <h1 className="text-xl md:text-4xl text-gray-100 font-bold mb-4">
@@ -73,16 +74,16 @@ function Home() {
           </div>
 
           {/* Stats */}
-          <div className="hidden sm:block sm:grid sm:grid-cols-3 gap-6 mt-12 grid-columns-3  ">
+          <div className="grid grid-cols-3 gap-2 sm:gap-6 sm:mt-12 grid-columns-3">
             {stats.map(({ icon: Icon, label, value }) => (
               <div key={label} className="text-center">
                 <div className="flex justify-center mb-2">
-                  <Icon className="h-5 w-5 md:h-7 md:w-7 text-green-200" />
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5 md:h-7 md:w-7 text-green-200" />
                 </div>
-                <div className="text-lg md:text-2xl font-bold text-gray-200">
+                <div className="text-sm sm:text-2xl font-bold text-gray-200">
                   {value}
                 </div>
-                <div className="text-sm md:text-xs text-gray-200">{label}</div>
+                <div className="text-xs sm:text-xl text-gray-200">{label}</div>
               </div>
             ))}
           </div>
@@ -127,6 +128,7 @@ function Home() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

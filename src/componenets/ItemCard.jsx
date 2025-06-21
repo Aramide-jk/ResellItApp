@@ -11,7 +11,6 @@ const conditionColors = {
 };
 
 function ItemCard({ item }) {
-  console.log(item);
   const formatDate = (date) => {
     return new Intl.RelativeTimeFormat("en", { numeric: "auto" }).format(
       Math.ceil(

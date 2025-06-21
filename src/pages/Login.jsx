@@ -32,7 +32,7 @@ function Login() {
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <BiShoppingBag className="h-10 w-10 text-green-600" />
+          <BiShoppingBag className="h-10 w-10 text-green-900" />
         </div>
         <h2 className="mt-6 text-center text-2xl font-bold text-gray-900">
           Welcome back to ResellIt
@@ -41,7 +41,7 @@ function Login() {
           Don't have an account?{" "}
           <Link
             to="/signup"
-            className="font-medium text-green-600 hover:text-green-500">
+            className="font-medium text-green-700 hover:text-green-500">
             Sign up here
           </Link>
         </p>

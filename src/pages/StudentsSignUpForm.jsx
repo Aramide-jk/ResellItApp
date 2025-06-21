@@ -20,6 +20,7 @@ function StudentSignUp() {
   const [states, setStates] = useState([]);
   const [institutions, setInstitutions] = useState([]);
   const [selectedState, setSelectedState] = useState("");
+  const [whatsAppUrl, setWhatsAppLUrl] = useState("");
 
   const { signup } = useAuth();
   const navigate = useNavigate();
@@ -61,6 +62,7 @@ function StudentSignUp() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setWhatsAppLUrl(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -98,6 +100,7 @@ function StudentSignUp() {
 
     setIsLoading(false);
   };
+  // Handle whatsApp
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -238,6 +241,12 @@ function StudentSignUp() {
                 className="mt-1 input-field"
                 placeholder="Optional"
               />
+              {!whatsAppUrl && (
+                <p className="text-xs sm:text-sm text-red-500 mt-1">
+                  If you don't provide your whatsApp link, buyeres won't be able
+                  to contact you via whatsApp.
+                </p>
+              )}
             </div>
             <div>
               <label

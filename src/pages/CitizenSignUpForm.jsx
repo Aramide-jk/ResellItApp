@@ -20,6 +20,7 @@ function CitizenSignUp() {
   const [states, setStates] = useState([]);
   const [towns, setTowns] = useState([]);
   const [selectedState, setSelectedState] = useState("");
+  const [whatsAppUrl, setWhatsAppUrl] = useState("");
 
   const { signup } = useAuth();
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ function CitizenSignUp() {
       ...formData,
       [e.target.name]: e.target.value,
     });
+    setWhatsAppUrl(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -148,7 +150,7 @@ function CitizenSignUp() {
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <BiShoppingBag className="h-12 w-12 text-green-600" />
+          <BiShoppingBag className="h-12 w-12 text-green-800" />
         </div>
         <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
           Join ResellIt Community
@@ -157,7 +159,7 @@ function CitizenSignUp() {
           Already have an account?{" "}
           <Link
             to="/login"
-            className="font-medium text-green-600 hover:text-green-500">
+            className="font-medium text-green-700 hover:text-green-500">
             Sign in here
           </Link>
         </p>
@@ -241,6 +243,12 @@ function CitizenSignUp() {
                 className="mt-1 input-field"
                 placeholder="Optional"
               />
+              {!whatsAppUrl && (
+                <p className="text-xs sm:text-sm text-red-500 mt-1">
+                  If you don't provide your whatsApp link, buyeres won't be able
+                  to contact you via whatsApp.
+                </p>
+              )}
             </div>
 
             <div>

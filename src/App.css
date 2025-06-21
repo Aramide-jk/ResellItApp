@@ -1,7 +1,8 @@
 /* src/styles/components.css */
 
 .btn-primary {
-  background-color: #14532d; /* Tailwind's blue-600 #16a34a;*/
+  /* background-color: #14532d;  */
+  background-image: linear-gradient(to bottom right, #14532d, #111827, #86efac);
   color: white;
   font-weight: 400;
   padding: 0.5rem 1rem;
@@ -10,12 +11,19 @@
 }
 
 .btn-primary:hover {
-  background-color: #16a36a; /* Tailwind's blue-700 */
+  background-image: linear-gradient(to bottom left, #14532d, #111827, #86efac);
 }
 
 .btn-primary:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.myGradient {
+  background-image: linear-gradient(to bottom right, #14532d, #111827, #86efac);
+}
+.myGradient:hover {
+  background-image: linear-gradient(to bottom left, #14532d, #111827, #86efac);
 }
 
 .btn-secondary {

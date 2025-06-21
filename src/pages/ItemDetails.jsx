@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 // import { ArrowLeft, User, Phone, Calendar, Tag, Share2 } from "lucide-react";
 import { useItems } from "../hooks/useItems";
@@ -17,6 +17,7 @@ function ItemDetails() {
   const navigate = useNavigate();
   const { items } = useItems();
   const { user } = useAuth();
+  const [whatsAppMissing, setWhatsAppMissing] = useState(false);
 
   const item = items.find((item) => item.id === id);
 
@@ -70,6 +71,14 @@ function ItemDetails() {
   };
 
   const handleWhatsAppLink = (url) => {
+    if (!url || url.trim() === "") {
+      setWhatsAppMissing(true);
+      setTimeout(() => {
+        setWhatsAppMissing(false);
+      }, 5000);
+      return;
+    }
+    setWhatsAppMissing(false);
     const newwindow = window.open(url, "_blank", "noopener,noreferrer");
     if (newwindow) newwindow.opener = null;
   };
@@ -137,7 +146,7 @@ function ItemDetails() {
                 <h3 className="text-lg font-semibold text-gray-900 mb-2 ">
                   Description
                 </h3>
-                <p className="text-gray-600 leading-relaxed first-letter:uppercase">
+                <p className="text-gray-600 leading-relaxed first-letter:uppercase break-words whitespace-pre-line">
                   {item.description}
                 </p>
               </div>
@@ -189,7 +198,7 @@ function ItemDetails() {
                           onClick={handleContact}
                           className="w-full btn-primary flex items-center justify-center space-x-2">
                           <BiPhone className="h-5 w-5" />
-                          <span>Phone</span>
+                          <span>Call</span>
                         </button>
                         <button
                           onClick={() => {
@@ -200,6 +209,12 @@ function ItemDetails() {
                           <span>WhatsApp</span>
                         </button>
                       </div>
+                    )}
+                    {whatsAppMissing && (
+                      <p className="text-sm text-red-500 mt-2">
+                        Seller did not provide their link.You can call them
+                        instead.
+                      </p>
                     )}
                     {!user && (
                       <div className="text-center">

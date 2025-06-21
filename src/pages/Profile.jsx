@@ -85,7 +85,7 @@ function Profile() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Profile Header */}
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 mb-8 overflow-auto">
-          <div className="md:flex md:items-start  md:space-x-6  items-center">
+          <div className="sm:flex sm:items-start  sm:space-x-6  items-center">
             <div className="flex-shrink-0 md:mb-0 mb-4 md:place-self-auto place-self-center">
               {user.profileImage ? (
                 <img
@@ -127,7 +127,7 @@ function Profile() {
                     onChange={(e) =>
                       setEditData({ ...editData, whatsAppLink: e.target.value })
                     }
-                    className="input-field"
+                    className="input-field "
                     placeholder="Optional WhatsApp Link"
                   />
                   <input

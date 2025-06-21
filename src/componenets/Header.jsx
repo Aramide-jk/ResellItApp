@@ -40,7 +40,7 @@ function Header() {
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
             <Link to="/" className="items-center space-x-2 hidden md:flex">
-              <div className="bg-green-900 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg">
+              <div className="bg-gradient-to-br from-green-900 via-gray-900 to-green-300 text-white w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg">
                 R
               </div>
               <span className="text-2xl font-bold text-gray-900">ResellIt</span>
@@ -52,7 +52,7 @@ function Header() {
                 <>
                   <Link
                     to="/post-item"
-                    className="flex items-center gap-2 py-1 px-3 rounded text-white bg-green-900 hover:bg-green-700 transition-colors">
+                    className="flex items-center gap-2 py-1 px-3 rounded text-white myGradient transition-colors">
                     <Plus className="h-4 w-4" />
                     <span>Post Item</span>
                   </Link>
@@ -81,7 +81,7 @@ function Header() {
                 <div className="flex items-center space-x-4">
                   <Link
                     to="/login"
-                    className="text-gray-700 hover:text-green-600 font-medium transition-colors">
+                    className="text-gray-700 hover:text-green-700 font-medium transition-colors">
                     Login
                   </Link>
                   <Link to="/signup" className="btn-primary">
@@ -134,15 +134,19 @@ function Header() {
           </>
         ) : (
           <>
+            <Link to="/" className="flex flex-col items-center text-green-900">
+              <BiHome className="h-6 w-6" />
+              <span className="text-xs">Home</span>
+            </Link>
             <Link
               to="/login"
-              className="flex flex-col items-center text-gray-700">
+              className="flex flex-col items-center text-green-900">
               <User className="h-6 w-6" />
               <span className="text-xs">Login</span>
             </Link>
             <Link
               to="/signup"
-              className="flex flex-col items-center text-green-700">
+              className="flex flex-col items-center text-green-900">
               <Plus className="h-6 w-6" />
               <span className="text-xs">Sign Up</span>
             </Link>
