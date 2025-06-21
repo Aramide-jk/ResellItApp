@@ -29,17 +29,15 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <Link href="/">
-                  <a className="hover:text-white transition-colors">
-                    Browse Items
-                  </a>
+                <Link to="/" className="hover:text-white transition-colors">
+                  Browse Items
                 </Link>
               </li>
               <li>
-                <Link href="/profile">
-                  <a className="hover:text-white transition-colors">
-                    My Profile
-                  </a>
+                <Link
+                  to="/profile"
+                  className="hover:text-white transition-colors">
+                  My Profile
                 </Link>
               </li>
               <li>

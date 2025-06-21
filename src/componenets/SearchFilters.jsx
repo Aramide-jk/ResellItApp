@@ -1,6 +1,5 @@
 import React from "react";
 import { Search, Filter } from "lucide-react";
-import { TbCurrencyNaira } from "react-icons/tb";
 
 const categories = [
   "All Categories",

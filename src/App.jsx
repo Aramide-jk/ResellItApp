@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import EditItems from "./pages/EditItems";
 import AuthProvider from "./context/AuthContext";
 import Header from "./componenets/Header";
+import { Footer } from "./componenets/Footer";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/edit-item/:id" element={<EditItems />} />
         </Routes>
+        <Footer />
       </div>
     </AuthProvider>
   );

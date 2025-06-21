@@ -91,7 +91,7 @@ function CitizenSignUp() {
       email: formData.email,
       phone: formData.phone,
       whatsAppLink: formData.whatsAppLink,
-      town: formData.university,
+      town: formData.town,
       password: formData.password,
     });
 
@@ -335,7 +335,7 @@ function CitizenSignUp() {
           <div className="mt-6">
             <div className="text-xs text-gray-500 text-center">
               By signing up, you agree to connect with fellow students in your
-              university community to buy and sell items responsibly.
+              town community to buy and sell items responsibly.
             </div>
           </div>
         </div>
