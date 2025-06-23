@@ -1,6 +1,4 @@
-import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import PostItem from "./pages/PostItem";
@@ -11,6 +9,7 @@ import EditItems from "./pages/EditItems";
 import AuthProvider from "./context/AuthContext";
 import Header from "./componenets/Header";
 import { Footer } from "./componenets/Footer";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
