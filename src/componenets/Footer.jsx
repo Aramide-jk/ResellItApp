@@ -74,7 +74,7 @@ export function Footer() {
               </li>
               <li>
                 <span className="text-sm">
-                  Built with React.js & Tailwind 
+                  Built with React.js & Tailwind CSS.
                 </span>
               </li>
             </ul>
